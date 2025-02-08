@@ -19,6 +19,6 @@ class ResponseWorker(QThread):
                 response = requests.post(self.url, json=json.loads(self.json_data) if self.json_data else {})
 
             pretty_json = json.dumps(response.json(), indent=4)
-            self.finished.emit(pretty_json, "")  # Успешный запрос
+            self.finished.emit(pretty_json, "")
         except requests.exceptions.RequestException as e:
-            self.finished.emit("", str(e))  # Ошибка запроса
+            self.finished.emit("", str(e))
